@@ -4,7 +4,7 @@ let displayValue = '';
 let value = 0;
 let operator = '';
 const display = document.querySelector(".display")
-const numbers = ['0','1','2','3','4','5','6','7','8','9',',']
+const numbers = ['0','1','2','3','4','5','6','7','8','9','.']
 for (let i = 0; i < keys.length; i++) {
     keys[i].addEventListener("click", (e) => {
         keys[i].classList.add("pressed")
@@ -29,6 +29,21 @@ for (let i = 0; i < keys.length; i++) {
                     clear();
                     display.innerHTML = res;
                 break
+                case '-':
+                    value = Number(displayValue);
+                    operator = '-'
+                    clear();
+                break    
+                case 'x':
+                value = Number(displayValue);
+                operator = '*'
+                clear();
+                break
+                case '/':
+                    value = Number(displayValue);
+                    operator = '/'
+                    clear();
+                break
             }
         }
     })
@@ -49,6 +64,16 @@ function calculate(op, n1, n2){
     switch (op) {
         case '+':
             result = n1 + n2
+        break
+        case '-':
+            result = n1 - n2
+        break
+        case '*':
+            result = n1 * n2
+        break
+
+        case '/':
+            result = n1 / n2
         break
         //case '-'
     }
